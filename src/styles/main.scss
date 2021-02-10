@@ -6,37 +6,36 @@
   display: flex;
   flex-wrap: wrap;
   width: ($size+$gap)*7;
-}
-
-@for $i from 1 through 31 {
-  .calendar div:nth-child(#{$i})::after {
-    display: none;
-    content: "#{$i}";
-  }
-}
-
-@for $i from 1 through 31 {
-  .calendar-#{$i} div:nth-child(-n+#{$i}) {
-    @include display__center;
-    @include box_style;
-    &::after {
-      display: inline;
-    }
-
-    &:hover {
-      margin-top: -20px;
-      margin-bottom: 0;
-      background-color: #ffbfcb;
-      transition: 0.8s;
-      cursor: pointer;
+  @for $i from 1 through 31 {
+    & div:nth-child(#{$i})::after {
+      display: none;
+      content: "#{$i}";
     }
   }
-}
+  
+  @for $i from 1 through 31 {
+    &-#{$i} div:nth-child(-n+#{$i}) {
+      @include display__center;
+      @include box_style;
+      &::after {
+        display: inline;
+      }
 
-@each $day, $margin in $days-margin {
-  .calendar-#{$day}:first-child {
-    div:first-child {
-      margin-left: $margin;
+      &:hover {
+        margin-top: -20px;
+        margin-bottom: 0;
+        background-color: #ffbfcb;
+        transition: 0.8s;
+        cursor: pointer;
+      }
+    }
+  }
+
+  @each $day, $margin in $days-margin {
+    &-#{$day}:first-child {
+      div:first-child {
+        margin-left: $margin;
+      }
     }
   }
 }
