@@ -19,18 +19,17 @@
   .calendar-#{$i} div:nth-child(-n+#{$i}) {
     @include display__center;
     @include box_style;
-  }
+    &::after {
+      display: inline;
+    }
 
-  .calendar-#{$i} div:nth-child(-n+#{$i})::after {
-    display: inline;
-  }
-
-  .calendar-#{$i} div:nth-child(-n+#{$i}):hover {
-    margin-top: -20px;
-    margin-bottom: 0;
-    background-color: #ffbfcb;
-    transition: 0.8s;
-    cursor: pointer;
+    &:hover {
+      margin-top: -20px;
+      margin-bottom: 0;
+      background-color: #ffbfcb;
+      transition: 0.8s;
+      cursor: pointer;
+    }
   }
 }
 
