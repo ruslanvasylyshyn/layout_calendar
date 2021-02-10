@@ -6,28 +6,27 @@
   display: flex;
   flex-wrap: wrap;
   width: ($size+$gap)*7;
+  & div {
+    @include display__center;
+    @include box_style;
+  }
+
+  & div:hover {
+    transform: translate(-30px, -20px);
+    margin-bottom: 0;
+    background-color: #ffbfcb;
+    cursor: pointer;
+  }
+  
   @for $i from 1 through 31 {
     & div:nth-child(#{$i})::after {
-      display: none;
       content: "#{$i}";
     }
   }
   
   @for $i from 1 through 31 {
-    &-#{$i} div:nth-child(-n+#{$i}) {
-      @include display__center;
-      @include box_style;
-      &::after {
-        display: inline;
-      }
-
-      &:hover {
-        margin-top: -20px;
-        margin-bottom: 0;
-        background-color: #ffbfcb;
-        transition: 0.8s;
-        cursor: pointer;
-      }
+    &-#{$i}>div:nth-child(n+#{$i + 1}) {
+      display: none;
     }
   }
 
