@@ -1,0 +1,14 @@
+@mixin display__center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin box_style {
+  background: #eee;
+  width: $size;
+  height: $size;
+  font-size: 30px;
+  border: $border;
+  margin: 0 0 $gap $gap;
+}

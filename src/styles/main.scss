@@ -1,26 +1,6 @@
-$size: 100px;
-$gap: 1px;
-$border: 1px solid #000;
-$days-indent:
-  "tue" $size+$gap,
-  "wed" ($size+$gap)*2,
-  "thu" ($size+$gap)*3,
-  "fri" ($size+$gap)*4,
-  "sat" ($size+$gap)*5,
-  "sun" ($size+$gap)*6;
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, Helvetica, sans-serif;
-}
+@import "variables";
+@import "mixin";
+@import "reset";
 
 .calendar {
   display: flex;
@@ -37,15 +17,8 @@ body {
 
 @for $i from 1 through 31 {
   .calendar-#{$i} div:nth-child(-n+#{$i}) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #eee;
-    width: $size;
-    height: $size;
-    font-size: 30px;
-    border: $border;
-    margin: 0 0 $gap $gap;
+    @include display__center;
+    @include box_style;
   }
 
   .calendar-#{$i} div:nth-child(-n+#{$i})::after {
@@ -61,7 +34,7 @@ body {
   }
 }
 
-@each $day, $margin in $days-indent {
+@each $day, $margin in $days-margin {
   .calendar-#{$day}:first-child {
     div:first-child {
       margin-left: $margin;
